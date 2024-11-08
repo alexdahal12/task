@@ -1,0 +1,47 @@
+﻿@model JobCandidatesApi.Models.Candidate
+
+<h2>Create Candidate</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Firstname"></label>
+        <input asp-for="Firstname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Lastname"></label>
+        <input asp-for="Lastname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LinkedIn"></label>
+        <input asp-for="LinkedIn" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Timeinterval"></label>
+        <input asp-for="Timeinterval" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GitHub"></label>
+        <input asp-for="GitHub" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TextComment"></label>
+        <textarea asp-for="TextComment" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

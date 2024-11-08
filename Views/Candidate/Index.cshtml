@@ -1,0 +1,37 @@
+﻿
+
+@model IEnumerable<JobCandidatesApi.Models.Candidate>
+
+<h2>Candidates</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>LinkedIn</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidate in Model)
+        {
+            <tr>
+                <td>@candidate.firstname</td>
+                <td>@candidate.lastname</td>
+                <td>@candidate.Email</td>
+                <td>@candidate.Phone</td>
+                <td>@candidate.LinkedIn</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@candidate.Id">View</a> |
+                    <a asp-action="Edit" asp-route-id="@candidate.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@candidate.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Add New Candidate</a>

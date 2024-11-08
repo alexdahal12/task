@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "wl7yuj9yYVOTT6KI5d9LrHztB5vTj5wB2FgslpgSAU8=",
+  "Source": "JobCandidatesApi",
+  "BasePath": "_content/JobCandidatesApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
