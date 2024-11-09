@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "faVHHiQaH1s=",
+  "dgSpecHash": "a8wCAeZxrAM=",
   "success": true,
   "projectFilePath": "C:\\Users\\ALEX\\JobCandidatesApi\\JobCandidatesApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ALEX\\.nuget\\packages\\bootstrap\\5.3.3\\bootstrap.5.3.3.nupkg.sha512",
     "C:\\Users\\ALEX\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ALEX\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.10\\microsoft.aspnetcore.openapi.8.0.10.nupkg.sha512",
     "C:\\Users\\ALEX\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

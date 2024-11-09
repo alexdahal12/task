@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "wl7yuj9yYVOTT6KI5d9LrHztB5vTj5wB2FgslpgSAU8=",
+  "Hash": "x4aBsmKTM1EoexMYpgb+bMDYVUgHEeu+2j6G4a3DU24=",
   "Source": "JobCandidatesApi",
   "BasePath": "_content/JobCandidatesApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "JobCandidatesApi\\wwwroot",
+      "Source": "JobCandidatesApi",
+      "ContentRoot": "C:\\Users\\ALEX\\JobCandidatesApi\\wwwroot\\",
+      "BasePath": "_content/JobCandidatesApi",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Job Candidates</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/ghAZtX1I6WjCMoiWRRgHf7/E7b2Z7rZoi6LC4GL6Jm1k1RW1swAMoYpFq3" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="container">
+        <header class="my-4">
+            <h1 class="text-center">Job Candidates</h1>
+        </header>
+
+        <!-- Main content area -->
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+        <footer class="border-top pt-3 mt-4">
+            <p class="text-center">&copy; 2023 - Job Candidates App</p>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEP0fAwJ8FONN8Lfr3zzLUfC0DuMA6z9eTq0R8i8eXiMCbURP" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -19,25 +19,24 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
-
-app.UseRouting();
+app.UseStaticFiles(); // Enable static file serving from wwwroot
 
 app.UseAuthorization();
 
 app.MapControllers(); // Map API controllers
+
+app.UseRouting();
+
 app.MapControllerRoute( // Map MVC controllers to handle view-related requests
     name: "default",
     pattern: "{controller=Candidate}/{action=Index}/{id?}"
 );
 
+app.Run();

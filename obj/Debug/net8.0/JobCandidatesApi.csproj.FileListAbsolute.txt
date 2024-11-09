@@ -1,5 +1,6 @@
 C:\Users\ALEX\JobCandidatesApi\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\ALEX\JobCandidatesApi\bin\Debug\net8.0\appsettings.json
+C:\Users\ALEX\JobCandidatesApi\bin\Debug\net8.0\JobCandidatesApi.staticwebassets.runtime.json
 C:\Users\ALEX\JobCandidatesApi\bin\Debug\net8.0\JobCandidatesApi.exe
 C:\Users\ALEX\JobCandidatesApi\bin\Debug\net8.0\JobCandidatesApi.deps.json
 C:\Users\ALEX\JobCandidatesApi\bin\Debug\net8.0\JobCandidatesApi.runtimeconfig.json
@@ -118,6 +119,9 @@ C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.AssemblyInfo.cs
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.csproj.CoreCompileInputs.cache
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.RazorAssemblyInfo.cache
+C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.RazorAssemblyInfo.cs
+C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.sourcelink.json
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\staticwebassets\msbuild.JobCandidatesApi.Microsoft.AspNetCore.StaticWebAssets.props
@@ -132,5 +136,3 @@ C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\refint\JobCandidatesApi.dll
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.pdb
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.genruntimeconfig.cache
 C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\ref\JobCandidatesApi.dll
-C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.RazorAssemblyInfo.cache
-C:\Users\ALEX\JobCandidatesApi\obj\Debug\net8.0\JobCandidatesApi.RazorAssemblyInfo.cs
