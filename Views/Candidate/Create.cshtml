@@ -2,46 +2,105 @@
 
 <h2>Create Candidate</h2>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="Firstname"></label>
-        <input asp-for="Firstname" class="form-control" />
+<form id="addCandidateForm" method="post">
+    <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" class="form-control" required>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Lastname"></label>
-        <input asp-for="Lastname" class="form-control" />
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" class="form-control" required>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" type="email" class="form-control" />
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" required>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Phone"></label>
-        <input asp-for="Phone" class="form-control" />
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" id="phone" class="form-control" required>
     </div>
-
-    <div class="form-group">
-        <label asp-for="LinkedIn"></label>
-        <input asp-for="LinkedIn" class="form-control" />
+    <div class="mb-3">
+        <label for="linkedin" class="form-label">LinkedIn</label>
+        <input type="url" id="linkedin" class="form-control">
     </div>
-
-    <div class="form-group">
-        <label asp-for="Timeinterval"></label>
-        <input asp-for="Timeinterval" type="number" class="form-control" />
+    <div class="mb-3">
+        <label for="github" class="form-label">GitHub</label>
+        <input type="url" id="github" class="form-control">
     </div>
-
-    <div class="form-group">
-        <label asp-for="GitHub"></label>
-        <input asp-for="GitHub" class="form-control" />
+    <div class="mb-3">
+        <label for="textComment" class="form-label">Text Comment</label>
+        <textarea id="textComment" class="form-control"></textarea>
     </div>
-
-    <div class="form-group">
-        <label asp-for="TextComment"></label>
-        <textarea asp-for="TextComment" class="form-control"></textarea>
-    </div>
-
     <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button type="button" class="btn btn-primary" onclick="goBackToIndex()">Back To Index</button>
 </form>
+
+<script>
+    function goBackToIndex() {
+        // Redirect to the Index page
+        window.location.href = '/Candidate/Index';
+    }
+</script>
+
+
+<script>
+    document.getElementById('addCandidateForm').addEventListener('submit', function(e) {
+        e.preventDefault();  // Prevent the default form submission
+
+        // Get form data
+        const formData = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            linkedin: document.getElementById('linkedin').value,
+            github: document.getElementById('github').value,
+            textComment: document.getElementById('textComment').value
+        };
+
+        // Send AJAX request to add the new candidate
+        fetch('/Candidate/Add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Clear form fields
+                document.getElementById('addCandidateForm').reset();
+
+                // Add the new candidate to the table
+                const table = document.querySelector('table tbody');
+                const newRow = document.createElement('tr');
+                newRow.id = 'candidate-' + data.candidate.id;  // Assuming 'data.candidate.id' is the newly created candidate's ID
+                newRow.innerHTML = `
+                    <td>${data.candidate.firstName}</td>
+                    <td>${data.candidate.lastName}</td>
+                    <td>${data.candidate.email}</td>
+                    <td>${data.candidate.phone}</td>
+                    <td><a href="${data.candidate.linkedin}" target="_blank">${data.candidate.linkedin}</a></td>
+                    <td><a href="${data.candidate.github}" target="_blank">${data.candidate.github}</a></td>
+                    <td>${data.candidate.textComment}</td>
+                    <td class="text-center">
+                        <a href="/Candidate/Edit/${data.candidate.id}" class="btn btn-warning btn-sm" title="Edit Candidate">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <form method="post" class="d-inline delete-form" data-id="${data.candidate.id}">
+                            <button type="button" class="btn btn-danger btn-sm delete-btn" title="Delete Candidate">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </form>
+                    </td>
+                `;
+                table.appendChild(newRow);
+                alert('Candidate added successfully!');
+            } else {
+                alert('Error adding candidate.');
+            }
+        })
+    });
+</script>

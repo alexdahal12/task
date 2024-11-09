@@ -4,11 +4,8 @@
     Layout = "_Layout";
 }
 
-<!-- Page title with enhanced styling -->
 <h2 class="mt-4 text-center text-primary">Candidate Directory</h2>
 
-
-<!-- Styled table with borders, compact size, and wrapping text for long fields -->
 <div class="table-responsive">
     <table class="table table-striped table-hover table-bordered table-md">
         <thead class="table-dark text-center">
@@ -52,7 +49,7 @@
     </table>
 </div>
 
-<!-- Additional 'Add New' button at the bottom with a fade effect -->
+
 <div class="text-end mt-4">
     <button id="addNewCandidateButton" class="btn btn-primary btn-lg">
         <i class="bi bi-person-plus-fill"></i> Add New Candidate
@@ -108,23 +105,6 @@
             }
         });
     </script>
-
-
-
-
-    <script>
-        // Confirmation before delete action
-        document.querySelectorAll('.delete-btn').forEach(function (button) {
-            button.addEventListener('click', function (event) {
-                const confirmDelete = confirm("Are you sure you want to delete this candidate?");
-                if (!confirmDelete) {
-                    event.preventDefault(); // Prevent form submission or link navigation
-                }
-            });
-        });
-    </script>
-
-
 
     <script>
         document.getElementById('addNewCandidateButton').addEventListener('click', function (event) {

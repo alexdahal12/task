@@ -65,5 +65,23 @@ namespace JobCandidatesApi.Controllers
             }
             return Json(new { success = true });
         }
+
+
+        [HttpPost]
+        public IActionResult Add([FromBody] Candidate newCandidate)
+        {
+            if (ModelState.IsValid)
+            {
+                // Add the candidate to the database 
+                _context.Candidates.Add(newCandidate);
+                _context.SaveChanges();
+
+                // Return the added candidate as a response
+                return Json(new { success = true, candidate = newCandidate });
+            }
+
+            return Json(new { success = false });
+        }
+
     }
 }
