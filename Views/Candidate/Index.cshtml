@@ -4,53 +4,168 @@
     Layout = "_Layout";
 }
 
-<h2 class="mt-4">Candidates</h2>
+<!-- Page title with enhanced styling -->
+<h2 class="mt-4 text-center text-primary">Candidate Directory</h2>
 
-<!-- Add a button to create a new candidate at the top -->
-<div class="mb-3">
-    <a asp-action="Create" asp-controller="Candidate" class="btn btn-success">Add New Candidate</a>
-</div>
 
-<table class="table table-striped table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>LinkedIn</th>
-            <th>GitHub</th>
-            <th>Text Comment</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var candidate in Model)
-        {
+<!-- Styled table with borders, compact size, and wrapping text for long fields -->
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered table-md">
+        <thead class="table-dark text-center">
             <tr>
-                <td>@candidate.firstname</td>
-                <td>@candidate.lastname</td>
-                <td>@candidate.Email</td>
-                <td>@candidate.Phone</td>
-                <td>
-                    <a href="@candidate.LinkedIn" target="_blank">@candidate.LinkedIn</a>
-                </td>
-                <td>
-                    <a href="@candidate.GitHub" target="_blank">@candidate.GitHub</a>
-                </td>
-                <td>@candidate.TextComment</td>
-                <td>
-                    <!-- Actions with styled buttons -->
-                    <a asp-action="Details" asp-route-id="@candidate.Id" class="btn btn-info btn-sm">View</a>
-                    <a asp-action="Edit" asp-route-id="@candidate.Id" class="btn btn-warning btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@candidate.Id" class="btn btn-danger btn-sm">Delete</a>
-                </td>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>LinkedIn</th>
+                <th>Time Interval</th>
+                <th>GitHub</th>
+                <th>Text Comment</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var candidate in Model)
+            {
+                <tr>
+                    <td>@candidate.firstname</td>
+                    <td>@candidate.lastname</td>
+                    <td>@candidate.Email</td>
+                    <td>@candidate.Phone</td>
+                    <td>@candidate.LinkedIn</td>
+                    <td>@candidate.Timeinterval</td>
+                    <td>@candidate.GitHub</td>
+                    <td>@candidate.TextComment</td>
+                    <td class="text-center">
+           
+                        <!-- Delete button with Bootstrap icon and confirmation dialog -->
+                        <form method="post" class="d-inline delete-form" data-id="@candidate.Id">
+                            <button type="button" class="btn btn-danger btn-sm delete-btn" title="Delete Candidate">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </form>
+                    </td>
 
-<!-- Additional 'Create New' button at the bottom -->
-<div class="text-end mt-3">
-    <a asp-action="Create" asp-controller="Candidate" class="btn btn-primary">Add New Candidate</a>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+
+<!-- Additional 'Add New' button at the bottom with a fade effect -->
+<div class="text-end mt-4">
+    <button id="addNewCandidateButton" class="btn btn-primary btn-lg">
+        <i class="bi bi-person-plus-fill"></i> Add New Candidate
+    </button>
+</div>
+
+<style>
+    h2 {
+        font-weight: 700;
+        color: #0d6efd;
+    }
+
+    table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Center and style action icons */
+    .table-responsive .btn i {
+        margin-right: 5px;
+    }
+
+    /* Ensure text wraps properly */
+    td {
+        word-wrap: break-word;
+        max-width: 200px; /* Adjust based on your layout */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Adjusting table size and adding border */
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+    /* Make the table more compact */
+    .table-sm td,
+    .table-sm th {
+        padding: 0.3rem;
+        font-size: 0.875rem; /* Smaller text */
+    }
+</style>
+
+    <script>
+        // Form Validation Script
+        document.querySelector("form").addEventListener("submit", function (event) {
+            const firstName = document.getElementById("FirstName").value;
+            const lastName = document.getElementById("LastName").value;
+            const email = document.getElementById("Email").value;
+
+            if (!firstName || !lastName || !email) {
+                alert("Please fill in all required fields.");
+                event.preventDefault();  // Prevent form submission if validation fails
+            }
+        });
+    </script>
+
+
+
+
+    <script>
+        // Confirmation before delete action
+        document.querySelectorAll('.delete-btn').forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                const confirmDelete = confirm("Are you sure you want to delete this candidate?");
+                if (!confirmDelete) {
+                    event.preventDefault(); // Prevent form submission or link navigation
+                }
+            });
+        });
+    </script>
+
+
+
+    <script>
+        document.getElementById('addNewCandidateButton').addEventListener('click', function (event) {
+            // Perform any custom logic here before redirecting
+            // For example, you can show a loading spinner or alert
+            alert('Redirecting to create a new candidate...');
+            window.location.href = '@Url.Action("Create", "Candidate")';  // Redirect to Create page
+        });
+    </script>
+
+<script>
+    // Handle delete button click with AJAX
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                // Get the candidate ID from the closest form's data-id attribute
+                const candidateId = this.closest('.delete-form').getAttribute('data-id');
+
+                // Confirm the delete action
+                if (confirm('Are you sure you want to delete this candidate?')) {
+                    // Send AJAX request to delete the candidate
+                    fetch('/Candidate/Delete/' + candidateId, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: candidateId })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // If successful, remove the row from the table
+                                document.getElementById('candidate-' + candidateId).remove();
+                                alert('Candidate deleted successfully!');
+                            } else {
+                                alert('Error deleting candidate.');
+                            }
+                        })
+                        
+                }
+            });
+        });
+    });
+</script>

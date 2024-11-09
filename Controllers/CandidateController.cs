@@ -52,5 +52,18 @@ namespace JobCandidatesApi.Controllers
             }
             return View(candidate); // Returns the Details view with information about a specific candidate
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            // Logic to delete the candidate from the database
+            var candidate = _context.Candidates.FirstOrDefault(c => c.Id == id);
+            if (candidate != null)
+            {
+                _context.Candidates.Remove(candidate);
+                _context.SaveChanges();
+            }
+            return Json(new { success = true });
+        }
     }
 }
